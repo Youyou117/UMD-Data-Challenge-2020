@@ -6,7 +6,7 @@
 # | | | | (_| | | | |  __/  __/\__ \ | | |
 # \_| |_/\__,_|_| |_|\___|\___||___/_| |_|
 # Date:   2020-02-22 10:36:53
-# Last Modified time: 2020-02-28 23:19:12
+# Last Modified time: 2020-02-29 11:16:57
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -83,6 +83,14 @@ def process(pedestrian,cycle,car,bus,truck):
 	# mode3 = [sum(car[96*3:96*4][i:i+4]) for i in range(0, len(car[96*3:96*4]),4)]
 	# mode4 = [sum(bus[96*3:96*4][i:i+4]) for i in range(0, len(bus[96*3:96*4]),4)]
 	# mode5 = [sum(truck[96*3:96*4][i:i+4]) for i in range(0, len(truck[96*3:96*4]),4)]
+
+	# Good Weather (1st Nov)
+	mode1 = [sum(pedestrian[96*4:96*5][i:i+4]) for i in range(0, len(pedestrian[96*5:96*6]),4)]
+	mode2 = [sum(cycle[96*4:96*5][i:i+4]) for i in range(0, len(cycle[96*5:96*6]),4)]
+	mode3 = [sum(car[96*4:96*5][i:i+4]) for i in range(0, len(car[96*5:96*6]),4)]
+	mode4 = [sum(bus[96*4:96*5][i:i+4]) for i in range(0, len(bus[96*5:96*6]),4)]
+	mode5 = [sum(truck[96*4:96*5][i:i+4]) for i in range(0, len(truck[96*5:96*6]),4)]
+
 
 	#Homecoming (2nd Nov)
 	# mode1 = [sum(pedestrian[96*5:96*6][i:i+4]) for i in range(0, len(pedestrian[96*5:96*6]),4)]
@@ -164,7 +172,7 @@ if __name__=="__main__":
 	truck=sensor[:,:,5][5]
 	
 	#WEEKLY ANALYSIS
-	# mode1=process(pedestrian,cycle,car,bus,truck)[0]
+	mode1=process(pedestrian,cycle,car,bus,truck)
 	# mode2=process(pedestrian,cycle,car,bus,truck)[1]
 	# mode3=process(pedestrian,cycle,car,bus,truck)[2]
 	# mode4=process(pedestrian,cycle,car,bus,truck)[3]
@@ -186,7 +194,7 @@ if __name__=="__main__":
 	
 
 	#WEEKLY PLOTS
-	# plot_data(mode1,time_hour,"Regents Drive"."(Monday)",1) #4th Nov
+	plot_data(mode1,time_hour,"Regents Drive","1st Nov",1) #4th Nov
 	# plot_data(mode2,time_hour,"Regents Drive","(Tuesday)",2) #5th Nov
 	# plot_data(mode3,time_hour,"Regents Drive","(Wednesday)",3) #6th Nov
 	# plot_data(mode4,time_hour,"Regents Drive","(Thursday)",4) #7th Nov
